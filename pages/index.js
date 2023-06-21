@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { Inter } from '@next/font/google';
 import Nav from './Nav';
 import Footer from './footer';
 import logo from "../public/shkzafariconremovebg.png"
