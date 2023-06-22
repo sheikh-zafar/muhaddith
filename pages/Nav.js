@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 export default function Nav() {
     const [navbarOpen, setNavbarOpen] = React.useState(false);
@@ -18,7 +20,13 @@ export default function Nav() {
                             className="cursor-pointer text-xl px-5 py-5 rounded bg-transparent block xl:hidden outline-none focus:outline-none bg-white text-black"
                             onClick={() => setNavbarOpen(!navbarOpen)}
                         >
-                            bar
+                            <FontAwesomeIcon
+                                icon={icon({
+                                    name: 'coffee',
+                                    family: 'sharp',
+                                    style: 'solid',
+                                })}
+                            />{' '}
                         </button>
                     </div>
 

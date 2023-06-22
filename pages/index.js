@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Nav from './Nav';
 import Footer from './footer';
-import logo from "../public/shkzafariconremovebg.png"
+import logo from '../public/shkzafariconremovebg.png';
 import sheikhzafarlogo from '../public/img/20.png';
 import pic1 from '../public/img/1.png';
 import pic2 from '../public/img/2.png';
@@ -46,26 +46,23 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="max-w-7xl mx-auto text-center mt-10">
-                    <h6 className="text-primarytext text-6xl font-extrabold font-sans">
-                        Top Sharh
+                    <h6 className="text-primarytext text-6xl lg:text-6xl  sm:text-2xl md:text-2xl font-extrabold font-sans">
+                        About Sheikh zafarulhasan Madani
                     </h6>
                     <hr className="bg-bgcolor text-2xl" />
                 </div>
                 <div className="max-w-7xl mx-auto mt-10">
                     <div className="grid lg:grid-cols-2 sm:grid-cols-1 xs:grid-cols-1 gap-4">
-                        <div>
+                        <div className="lg:ml-auto xl:ml-auto 2xl:ml-auto xs:mx-auto ">
                             <Image
                                 src={logo}
                                 alt="ahle ilm"
-                                width="fill"
+                                width="250"
                                 height="150"
                             />
                         </div>
-                        <div className="text-left">
-                            <h2 className="text-3xl sm:text-xl xs:text-xl text-primarytext">
-                                About Sheikh zafarulhasan madani
-                            </h2>
-                            <p className="text-secondarytext text-base mt-4">
+                        <div>
+                            <p className="text-gray-900 text-base my-4">
                                 Zafar-ul-Hasan Ahmedullah was born in 1956. He
                                 hails from a religious family of eight members
                                 from Changhaipur (Pratapgarh), a small town in
@@ -74,7 +71,12 @@ export default function Home() {
                                 Moulana Ahmedullah Pratapgadhi, Moulana
                                 Sanaullah Amritseri...
                             </p>
-                            <Link href="/about" />
+                            <Link
+                                href="/about"
+                                className="bg-primarytext rounded-xl hover:shadow-2xl p-3 text-base font-bold font-mono "
+                            >
+                                Read more
+                            </Link>
                         </div>
                     </div>
                 </div>
