@@ -1,10 +1,12 @@
 import React from 'react';
-import Link from 'next/link';
 
 export default function footer() {
-  return (
-    <div className="py-6 bg-blue-500">
-
+    return <div className="mx-auto max-w-7xl">
+      Footer
+      <div className="grid grid-cols-3">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+      </div>
     </div>
-  );
 }

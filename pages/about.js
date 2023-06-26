@@ -2,6 +2,7 @@ import Head from 'next/head';
 import React from 'react';
 import Nav from './Nav';
 import Link from 'next/link';
+import Footer from './footer';
 
 export default function About() {
     return (
@@ -171,6 +172,7 @@ export default function About() {
                     </Link>
                 </div>
             </main>
+            <Footer />
         </div>
     );
 }

@@ -140,6 +140,7 @@ export default function Home() {
                     ></audio>
                 </div>
             </main>
+            <Footer />
         </div>
     );
 }
