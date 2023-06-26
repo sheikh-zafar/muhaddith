@@ -3,6 +3,7 @@ import Nav from '../Nav';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
+import Footer from '../footer';
 
 export default function Dars({ data }) {
     return (
@@ -50,6 +51,7 @@ export default function Dars({ data }) {
                     ))}
                 </div>
             </div>
+            <Footer />
         </div>
     );
 }

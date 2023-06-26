@@ -144,18 +144,3 @@ export default function Home() {
         </div>
     );
 }
-export async function getStaticProps() {
-    const res = await fetch(`https://muhaddith-api-seven.vercel.app/api/dars`);
-    const data = await res.json();
-    let uniqueTitle = [
-        ...new Map(data.map(item => [item['seotitle'], item])).values(),
-    ];
-    let uniqueAudioLinks = [
-        ...new Map(data.map(item => [item['audioLinks'], item])).values(),
-    ];
-
-    return {
-        props: { title: uniqueTitle, uniqueAudioLinks, audioData: data },
-    };
-    revalidate: 60;
-}
