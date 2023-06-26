@@ -52,8 +52,8 @@ export default function Home() {
                     <hr className="bg-bgcolor text-2xl" />
                 </div>
                 <div className="max-w-7xl mx-auto mt-10">
-                    <div className="grid lg:grid-cols-2 sm:grid-cols-1 xs:grid-cols-1 gap-4">
-                        <div className="lg:ml-auto xl:ml-auto 2xl:ml-auto xs:mx-auto ">
+                    <div className="flex ">
+                        <div className="w-1/6">
                             <Image
                                 src={logo}
                                 alt="ahle ilm"
@@ -61,7 +61,7 @@ export default function Home() {
                                 height="150"
                             />
                         </div>
-                        <div>
+                        <div className="w-5/6 m-5">
                             <p className="text-gray-900 text-base my-4">
                                 Zafar-ul-Hasan Ahmedullah was born in 1956. He
                                 hails from a religious family of eight members
@@ -80,8 +80,8 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <div className="max-w-7xl mx-auto mt-10">
-                    <div className="grid lg:grid-cols-3 sm:grid-cols-1 xs:grid-cols-1 gap-4">
+                <div className="max-w-7xl mx-auto text-center mt-10">
+                    <div className="grid lg:grid-cols-3 sm:grid-cols-3 xs:grid-cols-1 gap-4">
                         <div>
                             <Image
                                 src={pic1}

@@ -20,13 +20,8 @@ export default function Nav() {
                             className="cursor-pointer text-xl px-5 py-5 rounded bg-transparent block xl:hidden outline-none focus:outline-none bg-white text-black"
                             onClick={() => setNavbarOpen(!navbarOpen)}
                         >
-                            <FontAwesomeIcon
-                                icon={icon({
-                                    name: 'coffee',
-                                    family: 'sharp',
-                                    style: 'solid',
-                                })}
-                            />{' '}
+                            <i className="fa-solid fa-check-square"></i>
+                            
                         </button>
                     </div>
 
