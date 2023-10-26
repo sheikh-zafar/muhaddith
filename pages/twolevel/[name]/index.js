@@ -5,7 +5,7 @@ import React from 'react';
 import Nav from '../../Nav';
 import Footer from '../../footer';
 
-export default function NameTwo({ data, childrenfilter, levelone, twolevel }) {
+export default function NameTwo({ data, childrenfilter, twolevel }) {
     return (
         <div>
             <Head>
@@ -21,42 +21,30 @@ export default function NameTwo({ data, childrenfilter, levelone, twolevel }) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Nav />
-            {twolevel !== null ? (
-                <p>Content for Condition (mowsamiyat)</p>
-            ) : levelone !== null ? (
-                <p>Content for Condition (targib)</p>
-            ) : (
-                <p>Content for Condition 3</p>
-            )}
             <div className="max-w-7xl mx-auto mt-10">
                 <div className="xl:grid-cols-5 lg:grid-cols-5 gap-5 sm:w-full md:w-full 2xs:grid 2xs:grid-cols-1 sm:grid sm:grid-cols-1 md:grid-cols-1 py-4 sm:mt-5 lg:mx-2 xs:text-xs xl:text-lg px-5 font-sans">
-                    {levelone.map((post, i) => (
+                    {twolevel.map((post, i) => (
                         <div key={i}>
                             <p className="text-base hover:text-blue-700 focus:text-blue-700 h-full text-gray-500">
                                 {post.name}
                                 <i className="fas fa-map-marker-alt"></i>{' '}
-                                <div>
-                                    <audio
-                                        controls
-                                        src={
-                                            `https://docs.google.com/uc?export=open&id=` +
-                                            post.id
-                                        }
-                                        type="audio/mp3"
-                                    ></audio>
-                                </div>
                             </p>
                         </div>
                     ))}
                 </div>
             </div>
+            {twolevel.map((j, i) => (
+                <div key={i}>{j.name}</div>
+            ))}
             <Footer />
         </div>
     );
 }
 
 export async function getStaticPaths() {
-    const res = await fetch(`https://muhaddith-api-seven.vercel.app/api/dars`);
+    const res = await fetch(
+        `https://muhaddith-api-seven.vercel.app/api/two-level`
+    );
     const data = await res.json();
     const paths = data.map(post => ({
         params: {
@@ -71,16 +59,12 @@ export async function getStaticProps({ params }) {
     const { name } = params;
 
     const res = await fetch(
-        `https://muhaddith-api-seven.vercel.app/api/dars/${name}`
+        `https://muhaddith-api-seven.vercel.app/api/two-level/${name}`
     );
     const data = await res.json();
     const childrenfilter = data.map(j => j.children.filter(h => h.name));
 
-    const twolevel = data.map(j =>
-        j.children.filter(h => h.children).map(f => f.children.map(g => g.name))
-    );
-
-    const levelone =
+    const twolevel =
         data
             .map(item =>
                 item.children.map(child => ({
@@ -94,7 +78,6 @@ export async function getStaticProps({ params }) {
         props: {
             data,
             childrenfilter,
-            levelone,
             twolevel,
         },
     };

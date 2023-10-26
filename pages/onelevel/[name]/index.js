@@ -5,7 +5,7 @@ import React from 'react';
 import Nav from '../../Nav';
 import Footer from '../../footer';
 
-export default function NameTwo({ data, childrenfilter, levelone, twolevel }) {
+export default function NameTwo({ data, childrenfilter, levelone }) {
     return (
         <div>
             <Head>
@@ -21,13 +21,6 @@ export default function NameTwo({ data, childrenfilter, levelone, twolevel }) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Nav />
-            {twolevel !== null ? (
-                <p>Content for Condition (mowsamiyat)</p>
-            ) : levelone !== null ? (
-                <p>Content for Condition (targib)</p>
-            ) : (
-                <p>Content for Condition 3</p>
-            )}
             <div className="max-w-7xl mx-auto mt-10">
                 <div className="xl:grid-cols-5 lg:grid-cols-5 gap-5 sm:w-full md:w-full 2xs:grid 2xs:grid-cols-1 sm:grid sm:grid-cols-1 md:grid-cols-1 py-4 sm:mt-5 lg:mx-2 xs:text-xs xl:text-lg px-5 font-sans">
                     {levelone.map((post, i) => (
@@ -56,7 +49,7 @@ export default function NameTwo({ data, childrenfilter, levelone, twolevel }) {
 }
 
 export async function getStaticPaths() {
-    const res = await fetch(`https://muhaddith-api-seven.vercel.app/api/dars`);
+    const res = await fetch(`https://muhaddith-api-seven.vercel.app/api/one-level`);
     const data = await res.json();
     const paths = data.map(post => ({
         params: {
@@ -71,7 +64,7 @@ export async function getStaticProps({ params }) {
     const { name } = params;
 
     const res = await fetch(
-        `https://muhaddith-api-seven.vercel.app/api/dars/${name}`
+        `https://muhaddith-api-seven.vercel.app/api/one-level/${name}`
     );
     const data = await res.json();
     const childrenfilter = data.map(j => j.children.filter(h => h.name));
@@ -95,7 +88,6 @@ export async function getStaticProps({ params }) {
             data,
             childrenfilter,
             levelone,
-            twolevel,
         },
     };
 }

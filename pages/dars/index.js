@@ -43,6 +43,7 @@ export default function Dars({ data }) {
                                         alt={post.images}
                                         width={200}
                                         height={200}
+                                        className="rounded-md"
                                     />
                                     {post.name}
                                 </p>

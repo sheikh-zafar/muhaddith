@@ -2,7 +2,7 @@ import Head from 'next/head';
 import React from 'react';
 import Nav from '../../../Nav';
 
-export default function NameThree({ name, nametwo }) {
+export default function NameThree({ name, nametwo, childInfo, childName }) {
     return (
         <div>
             <Head>
@@ -19,53 +19,67 @@ export default function NameThree({ name, nametwo }) {
             </Head>
             <Nav />
             {name} - {nametwo}
+            {childInfo.map(i => (
+                <div key={i.id}>
+                    {i.year} - {i.name} - {i.id}
+                </div>
+            ))}
         </div>
     );
 }
 export async function getStaticPaths() {
-    const res = await fetch(`https://muhaddith-api-seven.vercel.app/api/dars`);
+    const res = await fetch(
+        `https://muhaddith-api-seven.vercel.app/api/two-level`
+    );
     const data = await res.json();
-    const paths = data.map(p =>
+
+    const paths = data.flatMap(p =>
         p.children.map(h => ({
-            params: { name: h.name, nametwo: p.name },
+            params: { name: p.name, nametwo: h.name },
         }))
     );
 
     return { paths, fallback: false };
 }
-
 export async function getStaticProps({ params }) {
     const { name, nametwo } = params;
 
     const res = await fetch(
-        `https://muhaddith-api-seven.vercel.app/api/dars/${name}/${nametwo}`
+        `https://muhaddith-api-seven.vercel.app/api/two-level/${name}/${nametwo}`
     );
     const data = await res.json();
-    const childrenname = data.map(i =>
-        i.children.map(k => k.name).filter(j.children)
-    );
-    console.log(name, nametwo);
-    const childrenfilter = data.map(j => j.children.filter(h => h.name));
 
-    const childrenData =
-        data
-            .map(item =>
-                item.children.map(child => ({
-                    id: child.id,
+    const childInfo = [];
+    const childName = [];
+
+    data.forEach(item => {
+        if (item.children) {
+            item.children.forEach(child => {
+                childInfo.push({
+                    year: item.name,
                     name: child.name,
-                }))
-            )
-            .flat() || data.map(item => item.name);
+                    id: child.id,
+                });
+            });
+        }
+    });
+    data.forEach(item => {
+        if (item.children) {
+            item.children.forEach(child => {
+                childName.push({
+                    name: child.name,
+                });
+            });
+        }
+    });
 
-    const childrenid = data.map(i => i.children.map(k => k.id));
+    console.log(childInfo);
 
     return {
         props: {
             data,
-            childrenname,
-            childrenid,
-            childrenfilter,
-            childrenData,
+            childInfo,
+            childName
         },
     };
 }
