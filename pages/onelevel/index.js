@@ -1,6 +1,6 @@
 import React from 'react';
-import Nav from '../Nav';
-import Footer from '../footer';
+import Nav from '../../app/components/Nav';
+import Footer from '../../app/components/footer';
 
 export default function Duroos({ data }) {
     return (

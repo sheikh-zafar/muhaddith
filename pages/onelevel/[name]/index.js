@@ -2,8 +2,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import Nav from '../../Nav';
-import Footer from '../../footer';
+import Nav from '../../../app/components/Nav';
+import Footer from '../../../app/components/footer';
 
 export default function NameTwo({ data, childrenfilter, levelone }) {
     return (
