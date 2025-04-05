@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
-import Nav from '../../../Nav';
+import Nav from '../../../../app/components/Nav';
 
 export default function nametwo({ name, nametwo, childInfo, childName }) {
     return (

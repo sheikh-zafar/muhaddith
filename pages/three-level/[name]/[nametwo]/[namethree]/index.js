@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React from 'react';
-import Nav from '../../../../Nav';
-import Footer from '../../../../footer';
+import Nav from '../../../../../app/components/Nav';
+import Footer from '../../../../../app/components/footer';
 import { useRouter } from 'next/router';
 
 export default function Nametwo({
