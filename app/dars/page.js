@@ -1,9 +1,9 @@
 import React from 'react';
-import Nav from '../Nav';
+import Nav from '../components/Nav';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import Footer from '../footer';
+import Footer from '../components/footer';
 
 export default function Dars({ data }) {
     return (
@@ -12,7 +12,7 @@ export default function Dars({ data }) {
                 <title>فضيلة الشيخ ظفر الحسن مدني حفظه الله</title>
                 <meta
                     name="description"
-                    content="Preaching the way of Salaf as-saliheen || Includes Lectures, Bayan, Explanation of Books, Jummuah Khutbahs and many more"
+                    content="Upon the way of Salaf as-saliheen || Includes Lectures, Bayan, Explanation of Books, Jummuah Khutbahs and many more"
                 />
                 <meta
                     name="viewport"

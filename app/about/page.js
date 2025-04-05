@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import React from 'react';
-import Nav from './Nav';
+import Nav from '../Nav';
 import Link from 'next/link';
-import Footer from './footer';
+import Footer from '../footer';
 
 export default function About() {
     return (
@@ -11,7 +11,7 @@ export default function About() {
                 <title>فضيلة الشيخ ظفر الحسن مدني حفظه الله</title>
                 <meta
                     name="description"
-                    content="Preaching the way of Salaf as-saliheen || Includes Lectures, Bayan, Explanation of Books, Jummuah Khutbahs and many more"
+                    content="Upon the way of Salaf as-saliheen || Includes Lectures, Bayan, Explanation of Books, Jummuah Khutbahs and many more"
                 />
                 <meta
                     name="viewport"

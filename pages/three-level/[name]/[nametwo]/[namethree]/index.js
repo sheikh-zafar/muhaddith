@@ -1,8 +1,20 @@
 import Head from 'next/head';
 import React from 'react';
-import Nav from '../../../Nav';
+import Nav from '../../../../Nav';
+import Footer from '../../../../footer';
+import { useRouter } from 'next/router';
 
-export default function NameThree({ name, nametwo, childInfo, childName }) {
+export default function Nametwo({
+    name,
+    nametwo,
+    namethree,
+    childInfo,
+    childName,
+}) {
+    const router = useRouter();
+    const currentPath = router.pathname;
+    console.log(currentPath);
+
     return (
         <div>
             <Head>
@@ -18,35 +30,40 @@ export default function NameThree({ name, nametwo, childInfo, childName }) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Nav />
-            {name} - {nametwo}
+            {name} - {nametwo} - {namethree}
             {childInfo.map(i => (
                 <div key={i.id}>
-                    {i.year} - {i.name} - {i.id}
+                    {i.year} - {i.name}
                 </div>
             ))}
+            <Footer />
         </div>
     );
 }
 export async function getStaticPaths() {
     const res = await fetch(
-        `https://muhaddith-api-seven.vercel.app/api/two-level`
+        `https://muhaddith-api-seven.vercel.app/api/three-level`
     );
     const data = await res.json();
-
-    const paths = data.flatMap(p =>
-        p.children.map(h => ({
-            params: { name: p.name, nametwo: h.name },
-        }))
+    const paths = data.flatMap(i =>
+        i.children.flatMap(j =>
+            j.children.map(k => k => ({
+                params: {
+                    name: i.name,
+                    nametwo: j.name,
+                    namethree: k.name,
+                },
+            }))
+        )
     );
-    console.log(data.flatMap(p => p.name))
 
     return { paths, fallback: false };
 }
 export async function getStaticProps({ params }) {
-    const { name, nametwo } = params;
+    const { name, nametwo, namethree } = params;
 
     const res = await fetch(
-        `https://muhaddith-api-seven.vercel.app/api/two-level/${name}/${nametwo}`
+        `https://muhaddith-api-seven.vercel.app/api/three-level/${name}/${nametwo}/${namethree}`
     );
     const data = await res.json();
 
@@ -80,7 +97,7 @@ export async function getStaticProps({ params }) {
         props: {
             data,
             childInfo,
-            childName
+            childName,
         },
     };
 }

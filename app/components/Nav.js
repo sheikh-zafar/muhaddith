@@ -1,16 +1,13 @@
+'use client';
 import React, { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 export default function Nav() {
     const [navbarOpen, setNavbarOpen] = React.useState(false);
 
     return (
         <div>
-            <nav className="flex h-12 items-center px-4 justify-between bg-bgcolor text-primarytext">
+            <nav className="flex h-12 items-center px-4 justify-between bg-white text-primarytext">
                 <Link href="/" className="text-lg font-bold">
                     فضيلة الشيخ ظفر الحسن مدني حفظه الله
                 </Link>
@@ -21,7 +18,7 @@ export default function Nav() {
                             className="cursor-pointer text-xl px-5 py-5 rounded bg-transparent block xl:hidden outline-none focus:outline-none bg-white text-black"
                             onClick={() => setNavbarOpen(!navbarOpen)}
                         >
-                            <FontAwesomeIcon icon={faBars} />
+                            FaBars
                         </button>
                     </div>
 

@@ -2,7 +2,7 @@ import Head from 'next/head';
 import React from 'react';
 import Nav from '../../../Nav';
 
-export default function NameThree({ name, nametwo, childInfo, childName }) {
+export default function nametwo({ name, nametwo, childInfo, childName }) {
     return (
         <div>
             <Head>
@@ -21,7 +21,7 @@ export default function NameThree({ name, nametwo, childInfo, childName }) {
             {name} - {nametwo}
             {childInfo.map(i => (
                 <div key={i.id}>
-                    {i.year} - {i.name} - {i.id}
+                    {i.year} {i.name}
                 </div>
             ))}
         </div>
@@ -29,7 +29,7 @@ export default function NameThree({ name, nametwo, childInfo, childName }) {
 }
 export async function getStaticPaths() {
     const res = await fetch(
-        `https://muhaddith-api-seven.vercel.app/api/two-level`
+        `https://muhaddith-api-seven.vercel.app/api/three-level`
     );
     const data = await res.json();
 
@@ -38,7 +38,13 @@ export async function getStaticPaths() {
             params: { name: p.name, nametwo: h.name },
         }))
     );
-    console.log(data.flatMap(p => p.name))
+    console.log(
+        data.flatMap(p =>
+            p.children.map(h => ({
+                params: { name: p.name, nametwo: h.name },
+            }))
+        )
+    );
 
     return { paths, fallback: false };
 }
@@ -46,7 +52,7 @@ export async function getStaticProps({ params }) {
     const { name, nametwo } = params;
 
     const res = await fetch(
-        `https://muhaddith-api-seven.vercel.app/api/two-level/${name}/${nametwo}`
+        `https://muhaddith-api-seven.vercel.app/api/three-level/${name}/${nametwo}`
     );
     const data = await res.json();
 
